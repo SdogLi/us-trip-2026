@@ -3,713 +3,664 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>🇺🇸 2026 美国旅行计划 · 9/25-10/6</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
+<title>🇺🇸 美国旅行计划 2026 · 9/25-10/6</title>
+<meta name="description" content="12天洛杉矶→奥兰多迪士尼东西海岸旅行计划">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>✈️</text></svg>">
 <style>
-  :root {
-    --la-sky: #ff9a56;
-    --la-sunset: #ff6b35;
-    --fl-sky: #00c9ff;
-    --fl-sunset: #92fe9d;
-    --disney-purple: #7b2fbe;
-    --bg: #0f0f1a;
-    --card: #1a1a2e;
-    --card-hover: #22223a;
-    --text: #e8e8f0;
-    --text-muted: #8888a0;
-    --border: #2a2a44;
-  }
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Space+Grotesk:wght@400;500;600;700&display=swap');
 
-  * { margin: 0; padding: 0; box-sizing: border-box; }
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 
-  body {
-    font-family: 'Inter', 'Noto Sans SC', -apple-system, sans-serif;
-    background: var(--bg);
-    color: var(--text);
-    line-height: 1.7;
-    overflow-x: hidden;
-  }
+:root{
+  --c-bg:#06060e;
+  --c-surface:#0d0d1a;
+  --c-card:#111125;
+  --c-card-hover:#181835;
+  --c-border:rgba(255,255,255,.06);
+  --c-border-hover:rgba(255,255,255,.12);
+  --c-text:#e0e0f0;
+  --c-text-dim:#6b6b8a;
+  --c-text-mid:#9999b8;
+  --c-la:#ff6b35;
+  --c-la2:#ff9a56;
+  --c-fl:#00d4ff;
+  --c-fl2:#7df9ff;
+  --c-dk:#9b6dff;
+  --c-dk2:#c4a0ff;
+  --c-green:#34d399;
+  --radius:14px;
+  --radius-lg:20px;
+}
 
-  /* Hero */
-  .hero {
-    position: relative;
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    overflow: hidden;
-  }
+html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased}
 
-  .hero-bg {
-    position: absolute;
-    inset: 0;
-    background:
-      radial-gradient(ellipse at 20% 80%, rgba(255,107,53,0.25) 0%, transparent 50%),
-      radial-gradient(ellipse at 80% 20%, rgba(0,201,255,0.2) 0%, transparent 50%),
-      radial-gradient(ellipse at 50% 50%, rgba(123,47,190,0.15) 0%, transparent 60%);
-    animation: heroGlow 8s ease-in-out infinite alternate;
-  }
+body{
+  font-family:'DM Sans','Noto Sans SC',system-ui,sans-serif;
+  background:var(--c-bg);
+  color:var(--c-text);
+  line-height:1.65;
+  overflow-x:hidden;
+}
 
-  @keyframes heroGlow {
-    0% { opacity: 0.7; }
-    100% { opacity: 1; }
-  }
+/* ─── NAV ─── */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  padding:0 2rem;height:56px;
+  display:flex;align-items:center;justify-content:space-between;
+  background:rgba(6,6,14,.7);
+  backdrop-filter:blur(20px) saturate(1.5);
+  border-bottom:1px solid var(--c-border);
+  transform:translateY(-100%);
+  transition:transform .4s cubic-bezier(.22,1,.36,1);
+}
+nav.visible{transform:translateY(0)}
+nav .logo{font-weight:700;font-size:1rem;color:var(--c-text);text-decoration:none}
+nav .logo span{font-family:'Space Grotesk',sans-serif}
+nav .nav-links{display:flex;gap:1.75rem}
+nav .nav-links a{font-size:.82rem;color:var(--c-text-mid);text-decoration:none;font-weight:500;letter-spacing:.3px;transition:color .2s}
+nav .nav-links a:hover{color:var(--c-fl)}
 
-  .hero-content {
-    position: relative;
-    z-index: 1;
-    padding: 2rem;
-  }
+/* ─── HERO ─── */
+.hero{
+  position:relative;min-height:100vh;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  text-align:center;padding:2rem;
+  overflow:hidden;
+}
 
-  .hero h1 {
-    font-size: clamp(2.5rem, 6vw, 4.5rem);
-    font-weight: 700;
-    background: linear-gradient(135deg, #ff6b35, #ff9a56, #00c9ff, #92fe9d);
-    background-size: 300% 300%;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    animation: gradient 6s ease infinite;
-    margin-bottom: 1rem;
-  }
+.hero-orb{
+  position:absolute;border-radius:50%;filter:blur(100px);opacity:.35;
+  animation:float 12s ease-in-out infinite alternate;
+}
+.hero-orb.o1{width:500px;height:500px;background:var(--c-la);top:-10%;left:-10%;animation-delay:0s}
+.hero-orb.o2{width:400px;height:400px;background:var(--c-fl);bottom:-5%;right:-5%;animation-delay:-4s}
+.hero-orb.o3{width:300px;height:300px;background:var(--c-dk);top:30%;right:20%;animation-delay:-8s}
 
-  @keyframes gradient {
-    0%,100% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-  }
+@keyframes float{
+  0%{transform:translate(0,0) scale(1)}
+  33%{transform:translate(30px,-20px) scale(1.05)}
+  66%{transform:translate(-20px,30px) scale(.95)}
+  100%{transform:translate(10px,-10px) scale(1.02)}
+}
 
-  .hero-sub {
-    font-size: 1.25rem;
-    color: var(--text-muted);
-    margin-bottom: 0.5rem;
-  }
+.hero-badge{
+  display:inline-flex;align-items:center;gap:.5rem;
+  padding:.45rem 1rem;border-radius:999px;
+  background:rgba(255,255,255,.05);border:1px solid var(--c-border);
+  font-size:.78rem;color:var(--c-text-mid);letter-spacing:.5px;
+  margin-bottom:1.5rem;position:relative;z-index:1;
+}
+.hero-badge .dot{width:5px;height:5px;border-radius:50%;background:var(--c-green);animation:blink 2s infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
 
-  .hero-dates {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.75rem;
-    background: rgba(255,255,255,0.06);
-    border: 1px solid var(--border);
-    border-radius: 999px;
-    padding: 0.6rem 1.5rem;
-    font-size: 0.95rem;
-    color: var(--text);
-    margin-top: 1rem;
-    backdrop-filter: blur(10px);
-  }
+.hero h1{
+  font-family:'Space Grotesk',sans-serif;
+  font-size:clamp(2.8rem,8vw,5.5rem);
+  font-weight:700;line-height:1.1;
+  letter-spacing:-2px;
+  position:relative;z-index:1;
+}
+.hero h1 .line1{display:block;color:#fff}
+.hero h1 .line2{
+  display:block;
+  background:linear-gradient(135deg,var(--c-la),var(--c-la2),var(--c-fl),var(--c-fl2));
+  background-size:200% 200%;
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  animation:grad 5s ease infinite;
+}
+@keyframes grad{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
 
-  .hero-dates .dot {
-    width: 6px; height: 6px;
-    border-radius: 50%;
-    background: #00c9ff;
-    animation: pulse 2s infinite;
-  }
+.hero-sub{
+  margin-top:1.25rem;font-size:1.1rem;color:var(--c-text-mid);
+  position:relative;z-index:1;max-width:480px;
+}
 
-  @keyframes pulse {
-    0%,100% { opacity: 1; transform: scale(1); }
-    50% { opacity: 0.5; transform: scale(1.5); }
-  }
+.hero-route{
+  margin-top:2rem;
+  display:flex;align-items:center;gap:.75rem;
+  position:relative;z-index:1;
+  font-size:.88rem;font-weight:500;
+}
+.hero-route .city{padding:.4rem .9rem;border-radius:8px;background:rgba(255,255,255,.06)}
+.hero-route .city.la{color:var(--c-la2);border:1px solid rgba(255,107,53,.25)}
+.hero-route .city.fl{color:var(--c-fl);border:1px solid rgba(0,212,255,.25)}
+.hero-route .arrow{color:var(--c-text-dim);font-size:.75rem}
 
-  .scroll-hint {
-    position: absolute;
-    bottom: 2rem;
-    left: 50%;
-    transform: translateX(-50%);
-    color: var(--text-muted);
-    font-size: 0.85rem;
-    animation: bounce 2s infinite;
-  }
+.scroll-down{
+  position:absolute;bottom:2.5rem;left:50%;transform:translateX(-50%);
+  color:var(--c-text-dim);font-size:.75rem;letter-spacing:1px;
+  display:flex;flex-direction:column;align-items:center;gap:.5rem;
+  animation:bounce 2.5s infinite;z-index:1;
+}
+.scroll-down svg{width:16px;height:16px;stroke:var(--c-text-dim)}
+@keyframes bounce{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(6px)}}
 
-  @keyframes bounce {
-    0%,100% { transform: translateX(-50%) translateY(0); }
-    50% { transform: translateX(-50%) translateY(8px); }
-  }
+/* ─── STATS BAR ─── */
+.stats-bar{
+  max-width:960px;margin:-2.5rem auto 0;padding:0 1.5rem;
+  position:relative;z-index:10;
+}
+.stats-inner{
+  display:grid;grid-template-columns:repeat(4,1fr);
+  background:var(--c-card);border:1px solid var(--c-border);
+  border-radius:var(--radius-lg);padding:1.75rem 1.5rem;
+  backdrop-filter:blur(10px);
+}
+.stat{text-align:center}
+.stat .num{font-family:'Space Grotesk',sans-serif;font-size:1.6rem;font-weight:700;color:#fff}
+.stat .label{font-size:.75rem;color:var(--c-text-dim);margin-top:.2rem;text-transform:uppercase;letter-spacing:1.5px}
 
-  /* Overview */
-  .overview {
-    max-width: 900px;
-    margin: 0 auto;
-    padding: 4rem 1.5rem;
-  }
+/* ─── SECTION ─── */
+.container{max-width:960px;margin:0 auto;padding:0 1.5rem}
 
-  .overview-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1.25rem;
-    margin-top: 2rem;
-  }
+.section{padding:5rem 0}
+.section-head{margin-bottom:2.5rem}
+.section-eyebrow{font-size:.72rem;text-transform:uppercase;letter-spacing:2.5px;color:var(--c-text-dim);margin-bottom:.5rem}
+.section-title{font-family:'Space Grotesk',sans-serif;font-size:2rem;font-weight:700;letter-spacing:-.5px}
 
-  .overview-card {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 16px;
-    padding: 1.5rem;
-    text-align: center;
-    transition: transform 0.2s, border-color 0.2s;
-  }
+/* ─── TIMELINE ─── */
+.timeline{position:relative}
 
-  .overview-card:hover {
-    transform: translateY(-2px);
-    border-color: rgba(0,201,255,0.3);
-  }
+.timeline::before{
+  content:'';position:absolute;left:20px;top:0;bottom:0;
+  width:1px;
+  background:linear-gradient(to bottom,
+    var(--c-la) 0%,var(--c-fl) 40%,var(--c-dk) 70%,var(--c-fl) 100%);
+  opacity:.3;
+}
 
-  .overview-card .emoji { font-size: 2rem; margin-bottom: 0.5rem; }
-  .overview-card .label { font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; }
-  .overview-card .value { font-size: 1.1rem; font-weight: 600; margin-top: 0.25rem; }
+.day{
+  position:relative;
+  margin-bottom:1rem;
+  margin-left:52px;
+  background:var(--c-card);
+  border:1px solid var(--c-border);
+  border-radius:var(--radius);
+  overflow:hidden;
+  transition:all .3s cubic-bezier(.22,1,.36,1);
+}
+.day:hover{
+  border-color:var(--c-border-hover);
+  transform:translateY(-2px);
+  box-shadow:0 12px 40px rgba(0,0,0,.3);
+}
 
-  /* Section */
-  .section {
-    max-width: 900px;
-    margin: 0 auto;
-    padding: 2rem 1.5rem 4rem;
-  }
+.day-dot{
+  position:absolute;left:-42px;top:1.4rem;
+  width:10px;height:10px;border-radius:50%;
+  border:2px solid var(--c-text-dim);
+  background:var(--c-bg);
+  transition:all .3s;
+}
+.day:hover .day-dot{border-color:var(--c-fl);box-shadow:0 0 10px rgba(0,212,255,.3)}
+.day.la:hover .day-dot{border-color:var(--c-la);box-shadow:0 0 10px rgba(255,107,53,.3)}
+.day.dk .day-dot{background:var(--c-dk);border-color:var(--c-dk)}
+.day.flight .day-dot{background:var(--c-la2);border-color:var(--c-la2)}
 
-  .section-title {
-    font-size: 1.8rem;
-    font-weight: 700;
-    margin-bottom: 2rem;
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-  }
+.day-head{
+  padding:1.15rem 1.25rem .6rem;
+  display:flex;align-items:center;gap:.65rem;flex-wrap:wrap;
+}
+.day-idx{
+  font-family:'Space Grotesk',sans-serif;
+  font-size:.7rem;font-weight:700;text-transform:uppercase;
+  letter-spacing:2px;color:var(--c-text-dim);
+}
+.day-date{font-size:.78rem;color:var(--c-text-mid)}
+.day-pill{
+  margin-left:auto;
+  font-size:.65rem;font-weight:600;padding:.2rem .65rem;
+  border-radius:999px;letter-spacing:.5px;
+}
+.pill-la{background:rgba(255,107,53,.1);color:var(--c-la)}
+.pill-fl{background:rgba(0,212,255,.1);color:var(--c-fl)}
+.pill-dk{background:rgba(155,109,255,.12);color:var(--c-dk2)}
+.pill-flight{background:rgba(255,154,86,.1);color:var(--c-la2)}
 
-  /* Timeline */
-  .timeline {
-    position: relative;
-    padding-left: 2.5rem;
-  }
+.day-name{
+  padding:0 1.25rem .75rem;
+  font-size:1.1rem;font-weight:600;color:#fff;
+}
 
-  .timeline::before {
-    content: '';
-    position: absolute;
-    left: 0.75rem;
-    top: 0;
-    bottom: 0;
-    width: 2px;
-    background: linear-gradient(to bottom, var(--la-sunset), var(--fl-sky), var(--disney-purple));
-  }
+.day-body{padding:0 1.25rem 1.15rem}
+.day-body ul{list-style:none}
+.day-body li{
+  padding:.35rem 0 .35rem 1.15rem;
+  position:relative;font-size:.88rem;line-height:1.6;
+}
+.day-body li::before{
+  content:'';position:absolute;left:0;top:.7rem;
+  width:5px;height:5px;border-radius:50%;background:var(--c-text-dim);
+}
+.day-body li.hl::before{background:var(--c-fl);box-shadow:0 0 6px rgba(0,212,255,.4)}
+.day-body li.hl{color:#fff}
+.day-body a{color:var(--c-fl);text-decoration:none;border-bottom:1px solid transparent;transition:border .2s}
+.day-body a:hover{border-bottom-color:var(--c-fl)}
 
-  .day {
-    position: relative;
-    margin-bottom: 2rem;
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 16px;
-    overflow: hidden;
-    transition: border-color 0.3s, transform 0.2s;
-  }
+.day-callout{
+  margin-top:.85rem;padding:.7rem .9rem .7rem 1rem;
+  border-radius:10px;
+  font-size:.82rem;line-height:1.6;
+  background:rgba(0,212,255,.04);border-left:2px solid rgba(0,212,255,.3);
+  color:var(--c-text-mid);
+}
+.day-callout.warn{background:rgba(255,154,86,.04);border-left-color:rgba(255,154,86,.3)}
 
-  .day:hover {
-    border-color: rgba(0,201,255,0.3);
-    transform: translateX(4px);
-  }
+/* ─── WEATHER ─── */
+.weather-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.wx-card{
+  background:var(--c-card);border:1px solid var(--c-border);
+  border-radius:var(--radius);padding:1.5rem;text-align:center;
+  position:relative;overflow:hidden;
+}
+.wx-card::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:3px;
+}
+.wx-card.la::before{background:linear-gradient(90deg,var(--c-la),var(--c-la2))}
+.wx-card.fl::before{background:linear-gradient(90deg,var(--c-fl),var(--c-fl2))}
+.wx-card h3{font-size:.95rem;margin-bottom:.75rem}
+.wx-card .temp{font-family:'Space Grotesk',sans-serif;font-size:2.2rem;font-weight:700}
+.wx-card.la .temp{color:var(--c-la2)}
+.wx-card.fl .temp{color:var(--c-fl)}
+.wx-card .desc{font-size:.82rem;color:var(--c-text-mid);margin-top:.25rem}
 
-  .day::before {
-    content: '';
-    position: absolute;
-    left: -1.75rem;
-    top: 1.5rem;
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    border: 2px solid var(--fl-sky);
-    background: var(--bg);
-    z-index: 1;
-  }
+/* ─── CHECKLIST ─── */
+.check-grid{display:grid;grid-template-columns:1fr 1fr;gap:.75rem}
+.check-item{
+  display:flex;align-items:flex-start;gap:.85rem;
+  padding:1rem 1.15rem;
+  background:var(--c-card);border:1px solid var(--c-border);
+  border-radius:var(--radius);
+  transition:border-color .2s;
+}
+.check-item:hover{border-color:var(--c-border-hover)}
+.check-icon{font-size:1.35rem;flex-shrink:0;margin-top:.1rem}
+.check-text .ck-title{font-weight:600;font-size:.9rem}
+.check-text .ck-desc{font-size:.78rem;color:var(--c-text-mid);margin-top:.15rem}
 
-  .day.flight::before { border-color: var(--la-sunset); }
-  .day.disney::before { border-color: var(--disney-purple); background: var(--disney-purple); }
+/* ─── FOOTER ─── */
+footer{
+  text-align:center;padding:3rem 1.5rem 2rem;
+  border-top:1px solid var(--c-border);
+  color:var(--c-text-dim);font-size:.75rem;
+  max-width:960px;margin:0 auto;
+}
+footer a{color:var(--c-text-mid);text-decoration:none;transition:color .2s}
+footer a:hover{color:var(--c-fl)}
 
-  .day-header {
-    padding: 1.25rem 1.5rem 0.75rem;
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-    cursor: pointer;
-  }
+/* ─── REVEAL ─── */
+.reveal{opacity:0;transform:translateY(30px);transition:all .7s cubic-bezier(.22,1,.36,1)}
+.reveal.visible{opacity:1;transform:translateY(0)}
 
-  .day-num {
-    font-size: 0.75rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 1.5px;
-    color: var(--text-muted);
-  }
-
-  .day-date {
-    font-size: 0.85rem;
-    color: var(--text-muted);
-  }
-
-  .day-tag {
-    margin-left: auto;
-    font-size: 0.7rem;
-    padding: 0.2rem 0.6rem;
-    border-radius: 999px;
-    font-weight: 600;
-    letter-spacing: 0.5px;
-  }
-
-  .tag-la { background: rgba(255,107,53,0.15); color: var(--la-sunset); }
-  .tag-flight { background: rgba(255,154,86,0.15); color: var(--la-sky); }
-  .tag-fl { background: rgba(0,201,255,0.15); color: var(--fl-sky); }
-  .tag-disney { background: rgba(123,47,190,0.2); color: #b06cff; }
-
-  .day-title {
-    font-size: 1.2rem;
-    font-weight: 600;
-    padding: 0 1.5rem 0.75rem;
-  }
-
-  .day-body {
-    padding: 0 1.5rem 1.25rem;
-  }
-
-  .day-body ul {
-    list-style: none;
-    padding: 0;
-  }
-
-  .day-body li {
-    position: relative;
-    padding: 0.35rem 0 0.35rem 1.25rem;
-    font-size: 0.92rem;
-    color: var(--text);
-  }
-
-  .day-body li::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 0.75rem;
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    background: var(--text-muted);
-  }
-
-  .day-body li.time-highlight::before {
-    background: var(--fl-sky);
-    box-shadow: 0 0 6px rgba(0,201,255,0.4);
-  }
-
-  .day-body a {
-    color: var(--fl-sky);
-    text-decoration: none;
-    border-bottom: 1px solid transparent;
-    transition: border-color 0.2s;
-  }
-
-  .day-body a:hover {
-    border-bottom-color: var(--fl-sky);
-  }
-
-  .day-body .note {
-    margin-top: 0.75rem;
-    padding: 0.75rem 1rem;
-    background: rgba(0,201,255,0.06);
-    border-left: 3px solid var(--fl-sky);
-    border-radius: 0 8px 8px 0;
-    font-size: 0.85rem;
-    color: var(--text-muted);
-    line-height: 1.6;
-  }
-
-  .day-body .note.warn {
-    background: rgba(255,154,86,0.06);
-    border-left-color: var(--la-sky);
-  }
-
-  /* Weather */
-  .weather-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1.25rem;
-    margin-top: 1.5rem;
-  }
-
-  .weather-card {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 16px;
-    padding: 1.5rem;
-    text-align: center;
-  }
-
-  .weather-card h3 { font-size: 1rem; margin-bottom: 0.75rem; }
-  .weather-card .temp { font-size: 2rem; font-weight: 700; }
-  .weather-card .desc { font-size: 0.85rem; color: var(--text-muted); margin-top: 0.25rem; }
-
-  /* Checklist */
-  .checklist {
-    display: grid;
-    gap: 0.75rem;
-    margin-top: 1.5rem;
-  }
-
-  .check-item {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 1rem 1.25rem;
-    transition: border-color 0.2s;
-  }
-
-  .check-item:hover { border-color: rgba(0,201,255,0.3); }
-
-  .check-icon { font-size: 1.5rem; }
-  .check-label { font-weight: 600; font-size: 0.95rem; }
-  .check-desc { font-size: 0.82rem; color: var(--text-muted); margin-top: 0.15rem; }
-
-  /* Footer */
-  .footer {
-    text-align: center;
-    padding: 3rem 1.5rem;
-    color: var(--text-muted);
-    font-size: 0.8rem;
-    border-top: 1px solid var(--border);
-    max-width: 900px;
-    margin: 2rem auto 0;
-  }
-
-  /* Responsive */
-  @media (max-width: 640px) {
-    .overview-grid, .weather-grid { grid-template-columns: 1fr; }
-    .day-body li { font-size: 0.88rem; }
-  }
+/* ─── RESPONSIVE ─── */
+@media(max-width:680px){
+  .stats-inner{grid-template-columns:repeat(2,1fr);gap:1rem;padding:1.25rem 1rem}
+  .stat .num{font-size:1.3rem}
+  .check-grid{grid-template-columns:1fr}
+  .weather-grid{grid-template-columns:1fr}
+  nav .nav-links{gap:1rem}
+  nav .nav-links a{font-size:.75rem}
+  .day{margin-left:40px}
+  .timeline::before{left:14px}
+  .day-dot{left:-34px}
+}
 </style>
 </head>
 <body>
 
-<!-- Hero -->
+<!-- NAV -->
+<nav id="nav">
+  <a href="#" class="logo">✈️ <span>USA 2026</span></a>
+  <div class="nav-links">
+    <a href="#itinerary">行程</a>
+    <a href="#weather">天气</a>
+    <a href="#checklist">清单</a>
+  </div>
+</nav>
+
+<!-- HERO -->
 <section class="hero">
-  <div class="hero-bg"></div>
-  <div class="hero-content">
-    <div class="hero-sub">🌴 Los Angeles → Orlando 🏰</div>
-    <h1>美国旅行计划 2026</h1>
-    <p style="color:var(--text-muted);font-size:1.05rem">加利福尼亚 · 佛罗里达 · 12天东西海岸</p>
-    <div class="hero-dates">
-      <span class="dot"></span>
-      9月25日 — 10月6日
-      <span class="dot"></span>
-    </div>
+  <div class="hero-orb o1"></div>
+  <div class="hero-orb o2"></div>
+  <div class="hero-orb o3"></div>
+  <div class="hero-badge"><span class="dot"></span> 2026.09.25 — 10.06</div>
+  <h1>
+    <span class="line1">美国旅行计划</span>
+    <span class="line2">Los Angeles → Orlando</span>
+  </h1>
+  <p class="hero-sub">加利福尼亚 · 佛罗里达 · 12天东西海岸深度体验</p>
+  <div class="hero-route">
+    <span class="city la">🌴 洛杉矶 6天</span>
+    <span class="arrow">✈</span>
+    <span class="city fl">🏰 奥兰多 4天</span>
   </div>
-  <div class="scroll-hint">↓ 下滑查看行程</div>
-</section>
-
-<!-- Overview -->
-<section class="overview">
-  <h2 class="section-title">📊 行程概览</h2>
-  <div class="overview-grid">
-    <div class="overview-card">
-      <div class="emoji">📅</div>
-      <div class="label">总天数</div>
-      <div class="value">12 天</div>
-    </div>
-    <div class="overview-card">
-      <div class="emoji">🌴</div>
-      <div class="label">洛杉矶</div>
-      <div class="value">6 天（9/25-30）</div>
-    </div>
-    <div class="overview-card">
-      <div class="emoji">🏰</div>
-      <div class="label">奥兰多迪士尼</div>
-      <div class="value">4 天（10/2-5）</div>
-    </div>
-    <div class="overview-card">
-      <div class="emoji">✈️</div>
-      <div class="label">飞行日</div>
-      <div class="value">10月1日</div>
-    </div>
+  <div class="scroll-down">
+    <span>SCROLL</span>
+    <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
   </div>
 </section>
 
-<!-- Itinerary -->
-<section class="section">
-  <h2 class="section-title">🗓️ 每日行程</h2>
-
-  <div class="timeline">
-
-    <!-- Day 1 -->
-    <div class="day">
-      <div class="day-header">
-        <span class="day-num">Day 1</span>
-        <span class="day-date">9/25 周五</span>
-        <span class="day-tag tag-la">洛杉矶</span>
-      </div>
-      <div class="day-title">🛬 抵达洛杉矶</div>
-      <div class="day-body">
-        <ul>
-          <li>抵达 <a href="https://maps.google.com/?q=Los+Angeles+International+Airport" target="_blank">洛杉矶国际机场 LAX</a>，取车 / Uber 前往酒店</li>
-          <li>入住酒店，倒时差，附近轻松走走</li>
-          <li>晚餐：<a href="https://maps.google.com/?q=In-N-Out+Burger+Los+Angeles" target="_blank">In-N-Out Burger</a> 🍔</li>
-        </ul>
-        <div class="note">💡 洛杉矶景点分散，建议全程租车自驾或使用 Uber/Lyft。华人区住宿性价比高，中餐选择多。</div>
-      </div>
-    </div>
-
-    <!-- Day 2 -->
-    <div class="day">
-      <div class="day-header">
-        <span class="day-num">Day 2</span>
-        <span class="day-date">9/26 周六</span>
-        <span class="day-tag tag-la">洛杉矶</span>
-      </div>
-      <div class="day-title">🎬 好莱坞一日</div>
-      <div class="day-body">
-        <ul>
-          <li class="time-highlight"><a href="https://maps.google.com/?q=Hollywood+Walk+of+Fame" target="_blank">好莱坞星光大道</a> → <a href="https://maps.google.com/?q=TCL+Chinese+Theatre" target="_blank">中国戏院</a> → <a href="https://maps.google.com/?q=Dolby+Theatre" target="_blank">杜比剧院</a></li>
-          <li><a href="https://maps.google.com/?q=Beverly+Hills+Los+Angeles" target="_blank">比佛利山庄 Beverly Hills</a> 闲逛</li>
-          <li class="time-highlight">傍晚：<a href="https://maps.google.com/?q=Griffith+Observatory" target="_blank">格里菲斯天文台</a> 看日落 + 好莱坞标志 🌅</li>
-          <li>晚餐：<a href="https://maps.google.com/?q=Grand+Central+Market+Los+Angeles" target="_blank">Grand Central Market</a></li>
-        </ul>
-      </div>
-    </div>
-
-    <!-- Day 3 -->
-    <div class="day">
-      <div class="day-header">
-        <span class="day-num">Day 3</span>
-        <span class="day-date">9/27 周日</span>
-        <span class="day-tag tag-la">洛杉矶</span>
-      </div>
-      <div class="day-title">🏛️ 艺术与城市探索</div>
-      <div class="day-body">
-        <ul>
-          <li class="time-highlight"><a href="https://maps.google.com/?q=The+Getty+Center" target="_blank">盖蒂中心 The Getty Center</a> — 免费顶级艺术馆，俯瞰 LA 全景</li>
-          <li><a href="https://maps.google.com/?q=LACMA+Los+Angeles" target="_blank">LACMA</a> — 打卡城市之光灯柱（Urban Light）</li>
-          <li><a href="https://maps.google.com/?q=Walt+Disney+Concert+Hall" target="_blank">华特迪士尼音乐厅</a> 外观</li>
-          <li><a href="https://maps.google.com/?q=Little+Tokyo+Los+Angeles" target="_blank">小东京 Little Tokyo</a> 吃日料</li>
-          <li>晚上：<a href="https://maps.google.com/?q=Koreatown+Los+Angeles" target="_blank">韩国城 Koreatown</a> 夜宵</li>
-        </ul>
-      </div>
-    </div>
-
-    <!-- Day 4 -->
-    <div class="day">
-      <div class="day-header">
-        <span class="day-num">Day 4</span>
-        <span class="day-date">9/28 周一</span>
-        <span class="day-tag tag-la">洛杉矶</span>
-      </div>
-      <div class="day-title">🏖️ 一号公路 + 马里布海滩</div>
-      <div class="day-body">
-        <ul>
-          <li class="time-highlight">沿 PCH 北上：<a href="https://maps.google.com/?q=El+Matador+State+Beach+Malibu" target="_blank">El Matador State Beach</a>（海蚀洞穴拍照圣地）</li>
-          <li><a href="https://maps.google.com/?q=Point+Dume+Malibu" target="_blank">Point Dume 观景台</a></li>
-          <li>午餐：<a href="https://maps.google.com/?q=Malibu+Farm+Cafe" target="_blank">Malibu Farm Café</a> 🌊</li>
-          <li class="time-highlight"><a href="https://maps.google.com/?q=Santa+Monica+Pier" target="_blank">圣莫尼卡 Santa Monica</a> 海滩 + 码头 + 第三街购物</li>
-          <li><a href="https://maps.google.com/?q=Venice+Beach+Los+Angeles" target="_blank">威尼斯海滩 Venice Beach</a> 涂鸦墙 + 街头表演</li>
-        </ul>
-      </div>
-    </div>
-
-    <!-- Day 5 -->
-    <div class="day">
-      <div class="day-header">
-        <span class="day-num">Day 5</span>
-        <span class="day-date">9/29 周二</span>
-        <span class="day-tag tag-la">洛杉矶</span>
-      </div>
-      <div class="day-title">🌿 休闲探索日</div>
-      <div class="day-body">
-        <ul>
-          <li class="time-highlight"><a href="https://maps.google.com/?q=Huntington+Library+Art+Museum+and+Botanical+Gardens+San+Marino" target="_blank">亨廷顿图书馆</a> — 日式庭院 + 中国园林 🌿</li>
-          <li>午餐：<a href="https://maps.google.com/?q=Old+Town+Pasadena" target="_blank">Old Town Pasadena</a> 逛街吃饭</li>
-          <li><a href="https://maps.google.com/?q=Rodeo+Drive+Beverly+Hills" target="_blank">Rodeo Drive</a> window shopping / <a href="https://maps.google.com/?q=Melrose+Avenue+Los+Angeles" target="_blank">Melrose Avenue</a> 逛潮牌</li>
-          <li>傍晚：<a href="https://maps.google.com/?q=The+Original+Farmers+Market+Los+Angeles" target="_blank">Farmers Market</a> 吃吃逛逛</li>
-        </ul>
-      </div>
-    </div>
-
-    <!-- Day 6 -->
-    <div class="day">
-      <div class="day-header">
-        <span class="day-num">Day 6</span>
-        <span class="day-date">9/30 周三</span>
-        <span class="day-tag tag-la">洛杉矶</span>
-      </div>
-      <div class="day-title">🛍️ 购物日 + 出发准备</div>
-      <div class="day-body">
-        <ul>
-          <li>上午睡到自然醒</li>
-          <li class="time-highlight">奥特莱斯扫货：<a href="https://maps.google.com/?q=Desert+Hills+Premium+Outlets+Cabazon" target="_blank">Desert Hills Premium Outlets</a>（全美最大之一）或 <a href="https://maps.google.com/?q=Citadel+Outlets+Los+Angeles" target="_blank">Citadel Outlets</a></li>
-          <li>傍晚整理行李，准备明天飞佛罗里达 ✈️</li>
-        </ul>
-      </div>
-    </div>
-
-    <!-- Day 7 -->
-    <div class="day flight">
-      <div class="day-header">
-        <span class="day-num">Day 7</span>
-        <span class="day-date">10/1 周四</span>
-        <span class="day-tag tag-flight">飞行日</span>
-      </div>
-      <div class="day-title">✈️ 飞往奥兰多</div>
-      <div class="day-body">
-        <ul>
-          <li>上午：洛杉矶 → 奥兰多，直飞约 4.5-5 小时</li>
-          <li>下午：抵达 <a href="https://maps.google.com/?q=Orlando+International+Airport" target="_blank">奥兰多国际机场 MCO</a>，取车前往酒店</li>
-          <li class="time-highlight">入住迪士尼度假区附近酒店</li>
-          <li>傍晚探索 <a href="https://maps.google.com/?q=Disney+Springs+Orlando" target="_blank">Disney Springs</a> 逛街吃饭 🏰</li>
-        </ul>
-        <div class="note">🏨 住在迪士尼官方酒店可享受免费园内交通 + 提前入园。预算有限可选周边酒店。</div>
-      </div>
-    </div>
-
-    <!-- Day 8 -->
-    <div class="day disney">
-      <div class="day-header">
-        <span class="day-num">Day 8</span>
-        <span class="day-date">10/2 周五</span>
-        <span class="day-tag tag-disney">🏰 迪士尼</span>
-      </div>
-      <div class="day-title">👑 魔法王国 Magic Kingdom</div>
-      <div class="day-body">
-        <ul>
-          <li class="time-highlight"><a href="https://maps.google.com/?q=Magic+Kingdom+Park+Walt+Disney+World" target="_blank">Magic Kingdom Park</a> — 最经典园区</li>
-          <li>七个小矮人矿山车、创极速光轮、加勒比海盗</li>
-          <li>蒂安娜河口冒险（激流勇进）</li>
-          <li class="time-highlight">🎆 晚上：Happily Ever After 烟火秀（必看！）</li>
-        </ul>
-        <div class="note">💡 下载 My Disney Experience App，购买 Lightning Lane 省排队。周五人较少。</div>
-      </div>
-    </div>
-
-    <!-- Day 9 -->
-    <div class="day disney">
-      <div class="day-header">
-        <span class="day-num">Day 9</span>
-        <span class="day-date">10/3 周六</span>
-        <span class="day-tag tag-disney">🏰 迪士尼</span>
-      </div>
-      <div class="day-title">🌍 未来世界 Epcot</div>
-      <div class="day-body">
-        <ul>
-          <li class="time-highlight"><a href="https://maps.google.com/?q=Epcot+Walt+Disney+World" target="_blank">Epcot</a> — 科技 + 世界文化 + 美食</li>
-          <li>冰雪奇缘永恒之旅、银河护卫队：宇宙倒带</li>
-          <li>世界展示区 11 国展馆，边逛边吃 🍕🍷</li>
-          <li class="time-highlight">🎆 晚上：Luminous 烟火秀</li>
-        </ul>
-      </div>
-    </div>
-
-    <!-- Day 10 -->
-    <div class="day disney">
-      <div class="day-header">
-        <span class="day-num">Day 10</span>
-        <span class="day-date">10/4 周日</span>
-        <span class="day-tag tag-disney">🏰 迪士尼</span>
-      </div>
-      <div class="day-title">⚔️ 好莱坞影城 Hollywood Studios</div>
-      <div class="day-body">
-        <ul>
-          <li class="time-highlight"><a href="https://maps.google.com/?q=Disney's+Hollywood+Studios+Walt+Disney+World" target="_blank">Hollywood Studios</a> — 星球大战：银河边缘</li>
-          <li>星战：抵抗组织崛起（Rise of the Resistance）</li>
-          <li>千年隼号：走私者飞行、暮光之城恐惧之塔</li>
-          <li class="time-highlight">🎆 晚上：Fantasmic! 水幕烟花秀</li>
-        </ul>
-      </div>
-    </div>
-
-    <!-- Day 11 -->
-    <div class="day disney">
-      <div class="day-header">
-        <span class="day-num">Day 11</span>
-        <span class="day-date">10/5 周一</span>
-        <span class="day-tag tag-disney">🏰 迪士尼</span>
-      </div>
-      <div class="day-title">🦁 动物王国 Animal Kingdom</div>
-      <div class="day-body">
-        <ul>
-          <li class="time-highlight"><a href="https://maps.google.com/?q=Disney's+Animal+Kingdom+Walt+Disney+World" target="_blank">Animal Kingdom</a> — 阿凡达世界</li>
-          <li>阿凡达飞行之旅（强烈推荐！）、纳美河之旅</li>
-          <li>野生动物 Safari</li>
-          <li>下午灵活安排：酒店休息 / <a href="https://maps.google.com/?q=Disney+Springs+Orlando" target="_blank">Disney Springs</a> / 购物补货</li>
-        </ul>
-      </div>
-    </div>
-
-    <!-- Day 12 -->
-    <div class="day flight">
-      <div class="day-header">
-        <span class="day-num">Day 12</span>
-        <span class="day-date">10/6 周二</span>
-        <span class="day-tag tag-flight">回程</span>
-      </div>
-      <div class="day-title">🛫 回国</div>
-      <div class="day-body">
-        <ul>
-          <li>睡到自然醒，或最后逛逛</li>
-          <li>从 <a href="https://maps.google.com/?q=Orlando+International+Airport" target="_blank">奥兰多国际机场 MCO</a> 出发，回国</li>
-        </ul>
-      </div>
-    </div>
-
-  </div><!-- /timeline -->
-</section>
-
-<!-- Weather -->
-<section class="section">
-  <h2 class="section-title">🌤️ 天气提醒</h2>
-  <div class="weather-grid">
-    <div class="weather-card" style="border-top:3px solid var(--la-sunset);">
-      <h3>🌴 洛杉矶 9/25-30</h3>
-      <div class="temp" style="color:var(--la-sky);">27-29°C</div>
-      <div class="desc">夜间 17-19°C · 干燥舒适 · 早晚微凉</div>
-    </div>
-    <div class="weather-card" style="border-top:3px solid var(--fl-sky);">
-      <h3>🌊 奥兰多 10/1-6</h3>
-      <div class="temp" style="color:var(--fl-sky);">28-32°C</div>
-      <div class="desc">夜间 22-23°C · 湿热 · 午后雷阵雨</div>
-    </div>
+<!-- STATS -->
+<div class="stats-bar reveal">
+  <div class="stats-inner">
+    <div class="stat"><div class="num">12</div><div class="label">天数</div></div>
+    <div class="stat"><div class="num">2</div><div class="label">城市</div></div>
+    <div class="stat"><div class="num">4</div><div class="label">迪士尼</div></div>
+    <div class="stat"><div class="num">15+</div><div class="label">景点</div></div>
   </div>
-  <div class="note warn" style="margin-top:1.25rem;">⚠️ 10月初仍处于佛罗里达飓风季，建议出发前关注天气预报，购买旅行保险。</div>
-</section>
-
-<!-- Checklist -->
-<section class="section">
-  <h2 class="section-title">🎫 预订清单</h2>
-  <div class="checklist">
-    <div class="check-item">
-      <div class="check-icon">🏰</div>
-      <div><div class="check-label">奥兰多迪士尼 4 日票</div><div class="check-desc">官网购买，建议 Park Hopper + Lightning Lane</div></div>
-    </div>
-    <div class="check-item">
-      <div class="check-icon">📱</div>
-      <div><div class="check-label">My Disney Experience App</div><div class="check-desc">提前下载注册，绑定门票，购买 Lightning Lane</div></div>
-    </div>
-    <div class="check-item">
-      <div class="check-icon">🚗</div>
-      <div><div class="check-label">租车（两段）</div><div class="check-desc">LA 和奥兰多各租一段，Costco Travel / Hertz / Budget 比价</div></div>
-    </div>
-    <div class="check-item">
-      <div class="check-icon">🏨</div>
-      <div><div class="check-label">酒店</div><div class="check-desc">迪士尼官方酒店建议提前 3-6 个月预订</div></div>
-    </div>
-    <div class="check-item">
-      <div class="check-icon">🛡️</div>
-      <div><div class="check-label">旅行保险</div><div class="check-desc">含航班延误、飓风取消、医疗保障</div></div>
-    </div>
-    <div class="check-item">
-      <div class="check-icon">📷</div>
-      <div><div class="check-label">DS-160 面签材料</div><div class="check-desc">护照、照片、行程确认单、酒店预订、在职证明</div></div>
-    </div>
-  </div>
-</section>
-
-<!-- Footer -->
-<div class="footer">
-  🤖 Astro 整理 · 2026 美国旅行计划 · 源自小红书 + 互联网搜索<br>
-  <a href="https://www.xiaohongshu.com/explore/698d7e8b000000001a0260aa" target="_blank" style="color:var(--text-muted)">小红书攻略参考</a> ·
-  <a href="https://www.klook.com" target="_blank" style="color:var(--text-muted)">Klook</a> ·
-  <a href="https://www.trip.com" target="_blank" style="color:var(--text-muted)">Trip.com</a>
 </div>
 
+<!-- ITINERARY -->
+<section class="section" id="itinerary">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="section-eyebrow">Daily Itinerary</div>
+      <div class="section-title">🗓️ 每日行程</div>
+    </div>
+
+    <div class="timeline">
+
+      <div class="day la reveal">
+        <div class="day-dot"></div>
+        <div class="day-head">
+          <span class="day-idx">Day 1</span>
+          <span class="day-date">9/25 周五</span>
+          <span class="day-pill pill-la">洛杉矶</span>
+        </div>
+        <div class="day-name">🛬 抵达洛杉矶</div>
+        <div class="day-body">
+          <ul>
+            <li>抵达 <a href="https://maps.google.com/?q=Los+Angeles+International+Airport" target="_blank">LAX</a>，取车 / Uber 前往酒店</li>
+            <li>入住酒店，倒时差，轻松适应</li>
+            <li>晚餐 <a href="https://maps.google.com/?q=In-N-Out+Burger+Los+Angeles" target="_blank">In-N-Out Burger</a> 🍔</li>
+          </ul>
+          <div class="day-callout">💡 洛杉矶景点分散，建议租车自驾。华人区住宿性价比高，中餐选择多。</div>
+        </div>
+      </div>
+
+      <div class="day la reveal">
+        <div class="day-dot"></div>
+        <div class="day-head">
+          <span class="day-idx">Day 2</span>
+          <span class="day-date">9/26 周六</span>
+          <span class="day-pill pill-la">洛杉矶</span>
+        </div>
+        <div class="day-name">🎬 好莱坞一日</div>
+        <div class="day-body">
+          <ul>
+            <li class="hl"><a href="https://maps.google.com/?q=Hollywood+Walk+of+Fame" target="_blank">好莱坞星光大道</a> → <a href="https://maps.google.com/?q=TCL+Chinese+Theatre" target="_blank">中国戏院</a> → <a href="https://maps.google.com/?q=Dolby+Theatre" target="_blank">杜比剧院</a></li>
+            <li><a href="https://maps.google.com/?q=Beverly+Hills+Los+Angeles" target="_blank">比佛利山庄</a> 闲逛</li>
+            <li class="hl">傍晚 <a href="https://maps.google.com/?q=Griffith+Observatory" target="_blank">格里菲斯天文台</a> 看日落 + 好莱坞标志 🌅</li>
+            <li>晚餐 <a href="https://maps.google.com/?q=Grand+Central+Market+Los+Angeles" target="_blank">Grand Central Market</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="day la reveal">
+        <div class="day-dot"></div>
+        <div class="day-head">
+          <span class="day-idx">Day 3</span>
+          <span class="day-date">9/27 周日</span>
+          <span class="day-pill pill-la">洛杉矶</span>
+        </div>
+        <div class="day-name">🏛️ 艺术与城市探索</div>
+        <div class="day-body">
+          <ul>
+            <li class="hl"><a href="https://maps.google.com/?q=The+Getty+Center" target="_blank">盖蒂中心 The Getty Center</a> — 免费顶级艺术馆</li>
+            <li><a href="https://maps.google.com/?q=LACMA+Los+Angeles" target="_blank">LACMA</a> — 城市之光灯柱（Urban Light）</li>
+            <li><a href="https://maps.google.com/?q=Walt+Disney+Concert+Hall" target="_blank">华特迪士尼音乐厅</a> 外观</li>
+            <li><a href="https://maps.google.com/?q=Little+Tokyo+Los+Angeles" target="_blank">小东京</a> 吃日料 → <a href="https://maps.google.com/?q=Koreatown+Los+Angeles" target="_blank">韩国城</a> 夜宵</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="day la reveal">
+        <div class="day-dot"></div>
+        <div class="day-head">
+          <span class="day-idx">Day 4</span>
+          <span class="day-date">9/28 周一</span>
+          <span class="day-pill pill-la">洛杉矶</span>
+        </div>
+        <div class="day-name">🏖️ 一号公路 + 马里布</div>
+        <div class="day-body">
+          <ul>
+            <li class="hl">沿 PCH 北上 <a href="https://maps.google.com/?q=El+Matador+State+Beach+Malibu" target="_blank">El Matador Beach</a>（海蚀洞穴）</li>
+            <li><a href="https://maps.google.com/?q=Point+Dume+Malibu" target="_blank">Point Dume</a> 观景台</li>
+            <li>午餐 <a href="https://maps.google.com/?q=Malibu+Farm+Cafe" target="_blank">Malibu Farm Café</a> 🌊</li>
+            <li class="hl">回程 <a href="https://maps.google.com/?q=Santa+Monica+Pier" target="_blank">圣莫尼卡</a> 码头 + <a href="https://maps.google.com/?q=Venice+Beach+Los+Angeles" target="_blank">威尼斯海滩</a> 涂鸦墙</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="day la reveal">
+        <div class="day-dot"></div>
+        <div class="day-head">
+          <span class="day-idx">Day 5</span>
+          <span class="day-date">9/29 周二</span>
+          <span class="day-pill pill-la">洛杉矶</span>
+        </div>
+        <div class="day-name">🌿 休闲探索日</div>
+        <div class="day-body">
+          <ul>
+            <li class="hl"><a href="https://maps.google.com/?q=Huntington+Library+Art+Museum+and+Botanical+Gardens+San+Marino" target="_blank">亨廷顿图书馆</a> — 日式庭院 + 中国园林 🌿</li>
+            <li>午餐 <a href="https://maps.google.com/?q=Old+Town+Pasadena" target="_blank">Old Town Pasadena</a></li>
+            <li><a href="https://maps.google.com/?q=Rodeo+Drive+Beverly+Hills" target="_blank">Rodeo Drive</a> window shopping</li>
+            <li>傍晚 <a href="https://maps.google.com/?q=The+Original+Farmers+Market+Los+Angeles" target="_blank">Farmers Market</a> 吃逛</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="day la reveal">
+        <div class="day-dot"></div>
+        <div class="day-head">
+          <span class="day-idx">Day 6</span>
+          <span class="day-date">9/30 周三</span>
+          <span class="day-pill pill-la">洛杉矶</span>
+        </div>
+        <div class="day-name">🛍️ 购物日</div>
+        <div class="day-body">
+          <ul>
+            <li>睡到自然醒</li>
+            <li class="hl"><a href="https://maps.google.com/?q=Desert+Hills+Premium+Outlets+Cabazon" target="_blank">Desert Hills Outlets</a> 扫货（全美最大之一）</li>
+            <li>傍晚整理行李，明天飞佛罗里达 ✈️</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="day flight reveal">
+        <div class="day-dot"></div>
+        <div class="day-head">
+          <span class="day-idx">Day 7</span>
+          <span class="day-date">10/1 周四</span>
+          <span class="day-pill pill-flight">飞行日</span>
+        </div>
+        <div class="day-name">✈️ 飞往奥兰多</div>
+        <div class="day-body">
+          <ul>
+            <li>上午 LAX → MCO，直飞约 4.5h</li>
+            <li class="hl">抵达 <a href="https://maps.google.com/?q=Orlando+International+Airport" target="_blank">奥兰多 MCO</a>，取车前往酒店</li>
+            <li>傍晚 <a href="https://maps.google.com/?q=Disney+Springs+Orlando" target="_blank">Disney Springs</a> 逛街吃饭 🏰</li>
+          </ul>
+          <div class="day-callout">🏨 迪士尼官方酒店有免费园内交通 + 提前入园</div>
+        </div>
+      </div>
+
+      <div class="day dk reveal">
+        <div class="day-dot"></div>
+        <div class="day-head">
+          <span class="day-idx">Day 8</span>
+          <span class="day-date">10/2 周五</span>
+          <span class="day-pill pill-dk">🏰 迪士尼</span>
+        </div>
+        <div class="day-name">👑 魔法王国 Magic Kingdom</div>
+        <div class="day-body">
+          <ul>
+            <li class="hl"><a href="https://maps.google.com/?q=Magic+Kingdom+Park+Walt+Disney+World" target="_blank">Magic Kingdom</a> — 最经典园区</li>
+            <li>七个小矮人矿山车、创极速光轮</li>
+            <li>加勒比海盗、蒂安娜河口冒险</li>
+            <li class="hl">🎆 Happily Ever After 烟火秀</li>
+          </ul>
+          <div class="day-callout">💡 下载 My Disney Experience App 购 Lightning Lane 省排队</div>
+        </div>
+      </div>
+
+      <div class="day dk reveal">
+        <div class="day-dot"></div>
+        <div class="day-head">
+          <span class="day-idx">Day 9</span>
+          <span class="day-date">10/3 周六</span>
+          <span class="day-pill pill-dk">🏰 迪士尼</span>
+        </div>
+        <div class="day-name">🌍 未来世界 Epcot</div>
+        <div class="day-body">
+          <ul>
+            <li class="hl"><a href="https://maps.google.com/?q=Epcot+Walt+Disney+World" target="_blank">Epcot</a> — 科技 + 世界 + 美食</li>
+            <li>冰雪奇缘、银河护卫队：宇宙倒带</li>
+            <li>11 国展馆边逛边吃 🍕🍷</li>
+            <li class="hl">🎆 Luminous 烟火秀</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="day dk reveal">
+        <div class="day-dot"></div>
+        <div class="day-head">
+          <span class="day-idx">Day 10</span>
+          <span class="day-date">10/4 周日</span>
+          <span class="day-pill pill-dk">🏰 迪士尼</span>
+        </div>
+        <div class="day-name">⚔️ 好莱坞影城 Hollywood Studios</div>
+        <div class="day-body">
+          <ul>
+            <li class="hl"><a href="https://maps.google.com/?q=Disney's+Hollywood+Studios+Walt+Disney+World" target="_blank">Hollywood Studios</a> — 星战：银河边缘</li>
+            <li>星战：抵抗组织崛起</li>
+            <li>千年隼号走私者飞行、恐惧之塔</li>
+            <li class="hl">🎆 Fantasmic! 水幕烟花秀</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="day dk reveal">
+        <div class="day-dot"></div>
+        <div class="day-head">
+          <span class="day-idx">Day 11</span>
+          <span class="day-date">10/5 周一</span>
+          <span class="day-pill pill-dk">🏰 迪士尼</span>
+        </div>
+        <div class="day-name">🦁 动物王国 Animal Kingdom</div>
+        <div class="day-body">
+          <ul>
+            <li class="hl"><a href="https://maps.google.com/?q=Disney's+Animal+Kingdom+Walt+Disney+World" target="_blank">Animal Kingdom</a> — 阿凡达世界</li>
+            <li>阿凡达飞行之旅（强烈推荐！）</li>
+            <li>纳美河之旅 + 野生动物 Safari</li>
+            <li>下午灵活安排休息 / 购物</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="day flight reveal">
+        <div class="day-dot"></div>
+        <div class="day-head">
+          <span class="day-idx">Day 12</span>
+          <span class="day-date">10/6 周二</span>
+          <span class="day-pill pill-flight">回程</span>
+        </div>
+        <div class="day-name">🛫 回国</div>
+        <div class="day-body">
+          <ul>
+            <li>睡到自然醒，最后逛逛</li>
+            <li>从 <a href="https://maps.google.com/?q=Orlando+International+Airport" target="_blank">MCO</a> 出发回国</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- WEATHER -->
+<section class="section" id="weather">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="section-eyebrow">Weather Forecast</div>
+      <div class="section-title">🌤️ 天气提醒</div>
+    </div>
+    <div class="weather-grid reveal">
+      <div class="wx-card la">
+        <h3>🌴 洛杉矶 · 9/25-30</h3>
+        <div class="temp">27-29°C</div>
+        <div class="desc">夜间 17-19°C · 干燥舒适 · 早晚微凉</div>
+      </div>
+      <div class="wx-card fl">
+        <h3>🌊 奥兰多 · 10/1-6</h3>
+        <div class="temp">28-32°C</div>
+        <div class="desc">夜间 22-23°C · 湿热 · 午后雷阵雨</div>
+      </div>
+    </div>
+    <div class="day-callout warn reveal" style="margin-top:1rem">⚠️ 10月初仍处佛罗里达飓风季，出发前关注天气，建议购买旅行保险</div>
+  </div>
+</section>
+
+<!-- CHECKLIST -->
+<section class="section" id="checklist">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="section-eyebrow">Booking Checklist</div>
+      <div class="section-title">🎫 预订清单</div>
+    </div>
+    <div class="check-grid reveal">
+      <div class="check-item">
+        <div class="check-icon">🏰</div>
+        <div class="check-text"><div class="ck-title">奥兰多迪士尼 4 日票</div><div class="ck-desc">官网购买 · Park Hopper + Lightning Lane</div></div>
+      </div>
+      <div class="check-item">
+        <div class="check-icon">📱</div>
+        <div class="check-text"><div class="ck-title">My Disney Experience App</div><div class="ck-desc">提前下载 · 绑定门票 · 购买 Lightning Lane</div></div>
+      </div>
+      <div class="check-item">
+        <div class="check-icon">🚗</div>
+        <div class="check-text"><div class="ck-title">租车（两段）</div><div class="ck-desc">LA + 奥兰多各一段 · Costco/Hertz 比价</div></div>
+      </div>
+      <div class="check-item">
+        <div class="check-icon">🏨</div>
+        <div class="check-text"><div class="ck-title">酒店</div><div class="ck-desc">迪士尼官方酒店建议提前 3-6 个月预订</div></div>
+      </div>
+      <div class="check-item">
+        <div class="check-icon">🛡️</div>
+        <div class="check-text"><div class="ck-title">旅行保险</div><div class="ck-desc">含航班延误 · 飓风取消 · 医疗保障</div></div>
+      </div>
+      <div class="check-item">
+        <div class="check-icon">📋</div>
+        <div class="check-text"><div class="ck-title">DS-160 面签材料</div><div class="ck-desc">护照 · 照片 · 行程单 · 酒店预订 · 在职证明</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>🤖 <strong>Astro</strong> 整理 · 美国旅行计划 2026</p>
+  <p style="margin-top:.5rem">
+    <a href="https://www.xiaohongshu.com/explore/698d7e8b000000001a0260aa" target="_blank">小红书攻略</a> ·
+    <a href="https://www.klook.com" target="_blank">Klook</a> ·
+    <a href="https://www.trip.com" target="_blank">Trip.com</a> ·
+    <a href="https://www.weatherspark.com" target="_blank">WeatherSpark</a>
+  </p>
+</footer>
+
+<script>
+// Nav show/hide
+const nav=document.getElementById('nav');
+let lastY=0;
+window.addEventListener('scroll',()=>{
+  nav.classList.toggle('visible',window.scrollY>window.innerHeight*.5);
+  lastY=window.scrollY;
+},{passive:true});
+
+// Reveal on scroll
+const obs=new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target)}})
+},{threshold:.1,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+</script>
 </body>
 </html>
